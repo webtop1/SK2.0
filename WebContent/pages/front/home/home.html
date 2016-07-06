@@ -1,0 +1,164 @@
+<% var headContent = { %> <%
+include("/pages/front/includes/header.html"){} %> <% }; %> <% var
+bodyContent = { %> <%
+include("/pages/front/includes/header_menu.html"){} %>
+
+
+<div class="container-fluid container-fluid-top" style="padding-left:0px; padding-right:0px;">
+
+	<div class="row" >
+		<!-- 图片 -->
+		<div class="col-md-12">
+
+			<div class="panel panel-default" style="border:none;">
+				<div class="panel-body" style="padding: 0px;">
+
+					<div id="carousel-example-generic" class="carousel slide"
+						data-ride="carousel">
+						<!-- Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-example-generic" data-slide-to="0"
+								class="active"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+						</ol>
+
+						<!-- Wrapper for slides -->
+						<div id="carousel-inner-box" class="carousel-inner" role="listbox">
+							<% for(item in topPics.list){ %>
+							<div style="height: 450px;"
+								class="item ${itemLP.index==1?'active':''}">
+								<% var imageUrl = item.image_net_url;
+								if(strutil.isEmpty(imageUrl)) { imageUrl =
+								'download/image_url/'+item.image_url; } %> <img
+									src="${imageUrl}" alt="${item.title}">
+								<div class="carousel-caption">
+									<h4></h4>
+									<p>${item.title}</p>
+								</div>
+							</div>
+							<% } %>
+
+
+						</div>
+
+						<!-- Controls -->
+						<a class="left carousel-control" href="#carousel-example-generic"
+							role="button" data-slide="prev"> <span
+							class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">上一页</span>
+						</a> <a class="right carousel-control"
+							href="#carousel-example-generic" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"
+							aria-hidden="true"></span> <span class="sr-only">下一页</span>
+						</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<div style="position: relative">
+		<div class="center-x">
+			<div id="home-content" class="intro">
+				<p class="p1">Magwise 帮助世界领先的公司将他们最具雄心的理念转变为最高品质的精密金属组件。</p>
+				<a class="button" href="front/article/208">了解更多</a>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div style="position: relative">
+		<div class="center-x">
+			<div id="home-content" class="intro">
+			<img class="home-icon"
+						src="static/front/images/icon_die_cast.png" alt="" width='100' height='100'>
+					<h2 class="section-title">
+						<a class="feature-link" href="front/article/235">精密压铸</a>
+					</h2>
+				<p class="p1">Magwise 全球工厂制造精密的压铸组件，材料包括锌合金，铝合金和镁合金，以其独特的特性，适用于您的应用。</p>
+				<a class="button" href="front/article/235">了解更多</a>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div class="home-row" id="our-work">
+		<img src="static/front/images/icon_work.png" alt="" width='50' height='50'
+			class="home-icon">
+		<h2 class="section-title">我们的产品</h2>
+
+		<div class="center-x">
+		
+		
+		
+		<% for(item in products.list){ %>
+			<div class="grid-3">
+				<% var imageUrl = item.image_net_url;
+								if(strutil.isEmpty(imageUrl)) { imageUrl =
+								'download/image_url/'+item.image_url; } %>
+				<a href="front/article/${item.id}"> <span
+					class="image-mask  border"> 
+					<img
+						src="${imageUrl}" alt="${item.title}"
+						alt="" height="300" width="300">
+						<div class="hidden">
+							<div class="inner">
+								<h2>牙刷刷底和握把</h2>
+								<p>ADC12 铝与 Zn#3 锌。</p>
+								<span class="more-link"> 查看部件 </span>
+							</div>
+						</div>
+				</span>
+				</a>
+			</div>
+			<% } %>
+	
+			</div>
+
+			<div class="buttons">
+				<a class="button" href="/98">查看部件和产品</a>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div class="gray-back home-row" id="news-events">
+		<h2 class="section-title">活动和新闻</h2>
+		<div class="center-x">
+			<div class="flex">
+			<% for(item in news.list){ %>
+				<div class="event grid-3">
+					<h3 style="text-transform: uppercase; margin-bottom: 8px;">新闻</h3>
+
+					<a href="front/article/${item.id}"
+						class="more-link"> 立即查看 </a>
+				</div>
+			<% } %>	
+				
+			</div>
+			<div class="buttons">
+
+				<a class="button" href="92">查看所有活动</a> &nbsp;  
+				<a class="button" href="99">查看所有新闻</a> 
+				
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<% include("/pages/front/includes/footer.html"){} %> <a id="scrollTop"
+		href="javacript:void(0);" title="返回顶部" style="display: inline;"></a>
+
+	<%}; %> <%
+	layout("/pages/template/_layout.html",{head:headContent,body:bodyContent}){
+	%> <%} %>
